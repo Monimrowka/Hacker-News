@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default function navbar() {
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-primary">
     <div className="container-fluid">
@@ -32,6 +34,10 @@ export default function navbar() {
             <a className="nav-link" href="a">submit</a>
           </li>
         </ul>
+        <form class="d-flex searchbar" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+        <button class="btn btn-outline-info" type="submit">Search</button>
+      </form>
       </div>
     </div>
   </nav>

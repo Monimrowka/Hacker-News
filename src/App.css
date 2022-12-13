@@ -5,4 +5,21 @@
   right: 0;
 }
 
+.author {
+  font-size: 0.7rem;
+  color: gray
+}
+
+.smallinfo {
+  font-size: 0.7rem;
+  color: gray
+}
+
+#navbarNav {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+
+
 
