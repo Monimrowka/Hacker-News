@@ -11,7 +11,6 @@ export default function ArticlesList() {
   useEffect(() => {
   axios.get("http://hn.algolia.com/api/v1/search?tags=front_page")
   .then((response) => {
-  console.log(response); 
   setPostsFrontPage(response.data.hits)
   })
   .catch((error) => {

@@ -20,6 +20,11 @@
   justify-content: space-between !important;
 }
 
+.searchbar {
+  padding: 2.5rem;
+}
 
-
+.post {
+  padding-bottom: 1em;
+}
 
