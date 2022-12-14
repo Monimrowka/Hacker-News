@@ -1,6 +1,21 @@
 import React from 'react'
+import { useState } from "react";
+import axios from "axios";
 
-export default function navbar() {
+
+export default function navbar({postsFrontPage, setPostsFrontPage}) {
+
+  const handleOnClickNew = () => {
+    console.log('clicknew')
+    axios.get("http://hn.algolia.com/api/v1/search_by_date?tags=front_page")
+    .then((response) => {
+        setPostsFrontPage(response.data.hits);
+        console.log(response)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
 
   return (
@@ -13,7 +28,7 @@ export default function navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <a className="nav-link" aria-current="page" href="#">new</a>
+            <a className="nav-link" href="new" onClick={handleOnClickNew}>new</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">past</a>
