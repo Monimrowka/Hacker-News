@@ -3,18 +3,18 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Article from './Article';
-import Navbar from './Navbar';
-import Searchbar from './Searchbar';
 
 
-export default function ArticlesList({postsFrontPage, setPostsFrontPage}) {
 
-
+export default function ArticlesList({ postsFrontPage, setPostsFrontPage, setLoading, loading }) {
+ 
   useEffect(() => {
-  axios.get("http://hn.algolia.com/api/v1/search?tags=front_page")
+  axios
+  .get("http://hn.algolia.com/api/v1/search?tags=front_page")
   .then((response) => {
   setPostsFrontPage(response.data.hits)
   console.log(response)
+  setLoading(true)
   })
   .catch((error) => {
   console.log(error);
@@ -24,12 +24,20 @@ export default function ArticlesList({postsFrontPage, setPostsFrontPage}) {
  
       return ( 
         <>   
-          
-             <div className="postsFrontPage">
-                {postsFrontPage?.map((post) => {
-                    return <Article post={post} />
-                  })}
-        </div>
+          {loading ? ( 
+              <div className="postsFrontPage">
+                  {postsFrontPage?.map((post) => {
+                      return <Article key={post.objectID} post={post} />
+                      })} 
+              </div>) 
+              : 
+              (<div className="d-flex justify-content-center">
+              <button className="btn btn-primary p-3" type="button" disabled>
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+              </div>)
+            }
         </> 
       )
-        }
+  }

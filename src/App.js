@@ -4,20 +4,22 @@ import React from "react";
 import Navbar from "./Components/Navbar"
 import Footer from "./Components/Footer"
 import ArticlesList from './Components/ArticlesList';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Searchbar  from './Components/Searchbar';
 
 
 function App() {
 
-  const [postsFrontPage, setPostsFrontPage] = useState([])
+  const [postsFrontPage, setPostsFrontPage] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
 
   return (
     <>
     <Navbar />
-    <Searchbar setPostsFrontPage={setPostsFrontPage} />
-    <ArticlesList postsFrontPage={postsFrontPage} setPostsFrontPage={setPostsFrontPage}/>
+    <Searchbar setPostsFrontPage={setPostsFrontPage} loading={loading} setLoading={setLoading}/>
+    <ArticlesList postsFrontPage={postsFrontPage} setPostsFrontPage={setPostsFrontPage}  loading={loading} setLoading={setLoading}/>
     <Footer />
     </>
   );
