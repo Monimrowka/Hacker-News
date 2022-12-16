@@ -17,7 +17,7 @@ function App() {
 
   return (
     <>
-    <Navbar />
+    <Navbar setPostsFrontPage={setPostsFrontPage} setLoading={setLoading}/>
     <Searchbar setPostsFrontPage={setPostsFrontPage} loading={loading} setLoading={setLoading}/>
     <ArticlesList postsFrontPage={postsFrontPage} setPostsFrontPage={setPostsFrontPage}  loading={loading} setLoading={setLoading}/>
     <Footer />

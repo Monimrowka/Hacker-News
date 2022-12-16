@@ -13,7 +13,6 @@ export default function ArticlesList({ postsFrontPage, setPostsFrontPage, setLoa
   .get("http://hn.algolia.com/api/v1/search?tags=front_page")
   .then((response) => {
   setPostsFrontPage(response.data.hits)
-  console.log(response)
   setLoading(true)
   })
   .catch((error) => {
@@ -23,9 +22,10 @@ export default function ArticlesList({ postsFrontPage, setPostsFrontPage, setLoa
 
  
       return ( 
-        <>   
+        <div className="mainposts">   
           {loading ? ( 
-              <div className="postsFrontPage">
+              <div className="postsFrontPage"> 
+
                   {postsFrontPage?.map((post) => {
                       return <Article key={post.objectID} post={post} />
                       })} 
@@ -38,6 +38,6 @@ export default function ArticlesList({ postsFrontPage, setPostsFrontPage, setLoa
               </button>
               </div>)
             }
-        </> 
+        </div> 
       )
   }
