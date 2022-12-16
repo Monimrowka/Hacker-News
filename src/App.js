@@ -23,7 +23,7 @@ function App() {
  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
-    <Navbar />
+    <Navbar setPostsFrontPage={setPostsFrontPage} setLoading={setLoading}/>
     <Searchbar setPostsFrontPage={setPostsFrontPage} loading={loading} setLoading={setLoading}/>
     <ArticlesList postsFrontPage={currentPosts} setPostsFrontPage={setPostsFrontPage}  loading={loading} setLoading={setLoading}/>
     <Pagination postsPerPage={postsPerPage} totalPosts={postsFrontPage.length} paginate={paginate} />
